@@ -5,7 +5,7 @@
 Versions used :
 - Python 3.6.15 
 - CUDA 12.3  
-- MuJoCo 
+- [MuJoCo-200](https://www.roboti.us/index.html): download binaries, put license file inside, and add path to .bashrc
 
 Then you can install all the libraries using
 
@@ -18,16 +18,16 @@ pip install -r requirements.txt
 You can simply run the training procedure with the following command :
 
 ```
-python main.py --expID [experience id] --td --bu --morphologies [morphology family]
+python main.py --expID [experience id] --td --bu --morphologies [morphology family(ies)]
 ```
 
-Be carefull to check that the expID you run this experiment on is not already in the `results` or `buffers` folders. You must choose a morphology family to train your model on. It can be one of the following :
+You must choose a morphology family to train your model on. It can be one or multiple of the following :
 - hopper
 - cheetah
 - humanoid
 - walker
 
-For more information
+For more information about how to run `main.py`, go to the `README_modular_rl.md` file
 
 ### Code structure
 

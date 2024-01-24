@@ -10,7 +10,6 @@ src/gym/
 src/trained_models/
 src/SaveData/
 src/temp
-src/results
 src/runs
 src/pytorch_models
 src/temp.txt
