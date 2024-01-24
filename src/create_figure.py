@@ -8,13 +8,12 @@ from test_train_morphologies import train_morphologies
 import os
 import json
 
-
 sns.set_theme()
 
 
 if __name__ == "__main__":
     
-    # Args
+    # Get args
     args = get_args_figure()
     
     # Path to the TensorFlow event file    
@@ -36,16 +35,17 @@ if __name__ == "__main__":
     
     for i, e in enumerate(tf.compat.v1.train.summary_iterator(experiment_file_path)):
         for v in e.summary.value:
-            if 'episode_reward' in v.tag:
+            if ('len' not in v.tag) and ('test' not in v.tag):
                 steps.append(e.step)
-                tags.append(v.tag)
+                tags.append(v.tag.replace('_train', '').replace('_test', ''))
                 values.append(v.simple_value)
     
     # Store into dataframe
     df = pd.DataFrame.from_dict({'step': steps, 'tag': tags, 'value': values})
     df = df[df['tag'].apply(lambda x: x.replace('_episode_reward', '') in train_morphologies)]
-    df_rolling_mean = df.groupby('step', as_index=False).agg({'value':'mean'}).rolling(100, min_periods=0).mean()
-    name_morphology_family = tags[0].split('_')[0]+'s'
+    df_rolling_mean = df.groupby('step', as_index=False).agg({'value':'mean'})
+    df_rolling_mean['value'] = df_rolling_mean['value'].rolling(25, min_periods=1).mean()
+    name_morphology_family = ' '.join(training_args['morphologies'])
 
     # Create the figure
     plt.figure(figsize=(10, 6))  # You can adjust the figure size
@@ -61,7 +61,7 @@ if __name__ == "__main__":
         
     # Path to the images folders
     path_to_images_folder = './images/'
-    image_name = f'{name_morphology_family}_{args.ExpID}_test.png'
+    image_name = f'{args.ExpID}_{name_morphology_family}.png'.replace(' ', '_')
     
     # Save the figure
     plt.savefig(path_to_images_folder+image_name) 

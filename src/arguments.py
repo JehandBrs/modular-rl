@@ -17,7 +17,7 @@ def get_args():
     )
     parser.add_argument(
         "--save_buffer",
-        default=1,
+        default=0,
         type=int,
         help="If set to 1, save the buffer together with the model.",
     )
