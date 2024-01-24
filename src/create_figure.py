@@ -20,9 +20,12 @@ if __name__ == "__main__":
     results_directory = f'./{args.results_directory}'
     experiment_folder_name = f'/EXP_{args.ExpID}'
     experiment_directory = results_directory+experiment_folder_name
-    for filename in os.listdir(experiment_directory):
-        if args.logs_file_name_base in filename: 
-            event_file_name = f'/{filename}'
+    try:
+        for filename in os.listdir(experiment_directory):
+            if args.logs_file_name_base in filename: 
+                event_file_name = f'/{filename}'
+    except:
+        print('It seems that the Id entered don\'t rely to a specific experiment')
     experiment_file_path = experiment_directory+event_file_name
     
     # Retrieve the arguments of the raining procedure
