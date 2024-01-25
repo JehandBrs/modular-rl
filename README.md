@@ -24,10 +24,12 @@
 
 ### Running 
 
+#### Training
+
 You can simply run the training procedure with the following command :
 
-```
-python main.py --expID [experience id] --td --bu --morphologies [morphology family(ies)]
+```Shell
+python main.py --expID 0001 --td --bu --morphologies walker humanoid
 ```
 
 You must choose a morphology family to train your model on. It can be one or multiple of the following :
@@ -37,7 +39,21 @@ You must choose a morphology family to train your model on. It can be one or mul
 - walker
 
 For more information about how to run `main.py`, go to the `README_modular_rl.md` file.
-When this script is launched, the experiment is associated with an ID and the results (model, tensorboard, buffer) are stored in the `results` and `buffers` files.
+When this script is launched, the experiment is associated with an ID and the results (model, tensorboard, buffer) are stored in the `results` and `buffers` folders.
+
+#### Visualizing results
+
+There are two ways to show results :
+
+- Using tensorboard you can see the training reward and episode length for each morphology that are trained.
+```Shell
+tensorboard --logdir=results/EXP_0001
+``` 
+
+- You can also create a figure to show the results of an experiment. It will show an average reward curve of all the morphologies trained at each time steps. The figure is stored in the images folder.
+```Shell
+python create_figure.py --ExpID 0001
+```
 
 ### Code structure
 
