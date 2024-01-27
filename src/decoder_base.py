@@ -67,8 +67,11 @@ class DecoderBase(nn.Module):
     def forward(self, obs_z, act_z, obs, act=None):
 
         # frequency encoding of the observation 
-        obs = (2 / math.sqrt(2.0)) * self.frequency_encoding(
-            obs * self.obs_scale, self.frequency_encoding_size)
+        if self.frequency_encoding_size>1:
+            obs = (2 / math.sqrt(2.0)) * self.frequency_encoding(
+                obs * self.obs_scale, self.frequency_encoding_size)
+        else:
+            obs = obs.unsqueeze(-1)
 
         # Concat obs_z (sensor Embedding) with obs (frequency encoding of observation)
         # This will be passed to the transformer encoder
@@ -82,8 +85,11 @@ class DecoderBase(nn.Module):
             # Exactly the same process as for observations if it's a Critic network
             # We perform a frenquency encoding of actions and concat with corresponding actuators embeddings
             # This will be passed to the transformer decoder
-            act = (2 / math.sqrt(2.0)) * self.frequency_encoding(
-                act * self.act_scale, self.frequency_encoding_size)
+            if self.frequency_encoding_size>1:
+                act = (2 / math.sqrt(2.0)) * self.frequency_encoding(
+                    act * self.act_scale, self.frequency_encoding_size)
+            else:
+                act = act.unsqueeze(-1)
 
             n_act_z = torch.cat([act_z, act], dim=2)
 

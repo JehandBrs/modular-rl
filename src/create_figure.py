@@ -52,8 +52,8 @@ if __name__ == "__main__":
 
     # Create the figure
     plt.figure(figsize=(10, 6))  # You can adjust the figure size
-    sns.lineplot(data=df, x = 'step', y = 'value', estimator = 'mean', ci = None, alpha = 0.2)
-    sns.lineplot(data=df_rolling_mean, x = 'step', y = 'value')
+    sns.lineplot(data=df, x = 'step', y = 'value', estimator = 'mean', ci = None, alpha = 0.2, label = 'Average over morphologies')
+    sns.lineplot(data=df_rolling_mean, x = 'step', y = 'value', label = 'Rolling mean')
     plt.xlabel('Training steps')
     plt.ylabel('Training reward')
     plt.suptitle(f'{name_morphology_family}', fontsize=25)
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # Path to the images folders
     path_to_images_folder = './images/'
     image_name = f'{args.ExpID}_{name_morphology_family}.png'.replace(' ', '_')
-    
+    plt.legend()
     # Save the figure
     plt.savefig(path_to_images_folder+image_name) 
 

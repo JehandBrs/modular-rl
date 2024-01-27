@@ -206,6 +206,8 @@ class MLPSimpleCritic(nn.Module):
 
 class SubprocVecEnv():
     "A class to facilitate the manipulation of multiple environments at the same time"
+    "The intent of this class is not avoid modifying the training code"
+    "It doesn't do the same thing as SubprocVecEnv from stable_baselines library"
     def __init__(self, env_train_makers:makeEnvWrapper):
         self.envs_train  = [env_train_maker() for env_train_maker in env_train_makers]
         self.action_space = self.envs_train[0].action_space
