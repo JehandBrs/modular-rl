@@ -344,7 +344,6 @@ def get_args():
 
     return args
 
-
 def get_args_figure():
     
     parser = argparse.ArgumentParser(description="figure")
@@ -359,6 +358,26 @@ def get_args_figure():
     
     parser.add_argument(
         "--logs_file_name_base", default='events.out.tfevents', type=str, help="Base for the name of the files to read to retrieve experiments"
+    )
+    
+    args = parser.parse_args()
+    
+    return args
+
+def get_args_test():
+    
+    parser = argparse.ArgumentParser(description="figure")
+    
+    parser.add_argument(
+        "--ExpID", default='0005', type=str, help="Id to retrieve the file"
+    )
+    
+    parser.add_argument(
+        "--results_directory", default='results', type=str, help="Path to the results directory"
+    )
+    
+    parser.add_argument(
+        "--model_file_name", default='model.pyth', type=str, help="name of the model file"
     )
     
     args = parser.parse_args()

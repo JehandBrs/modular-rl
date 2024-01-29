@@ -22,6 +22,7 @@
   pip install -r requirements.txt
   ```
 
+
 ### Running 
 
 #### Training
@@ -62,7 +63,8 @@ The code is structured the following way :
 - the files `ModularActor.py` and `ModularCritic.py` refer to the models of the paper modular-rl.
 - the files `TransformerActor.py` and `TransformerCritic.py` refer to the models of the paper amorpheus.
 - the files `decoder_base.py`, `VariationalActor.py` and `VariationalCritic.py` refer to the models of the paper AnyMorph.
-- the files `AnyMorphArchitecture.py`, `TD3AnyMorph.py`, `MorphologyEncoder.py` and `NameToMoprhologyMapping.py` refers to an attempt to code AnyMorph model from scratch and are not used in the training procedure.
+- the files `AnyMorphArchitecture.py`, `TD3AnyMorph.py`, `MorphologyEncoder.py` and `NameToMoprhologyMapping.py` refers to an attempt to code AnyMorph model from scratch and are not used in the training procedure. These scripts are not used, and are contained in the folder `AnyMorph_old`.
+
 
 ### Acknowledgement
 

@@ -1,3 +1,9 @@
+'''
+Here are lists wioth the morphologies we train our models on, 
+and the morphologies we use to test the zero-shot performance of our models
+'''
+
+# The morphologies we train on :
 
 train_morphologies = [
     'cheetah_2_back',
@@ -25,4 +31,16 @@ train_morphologies = [
     'hopper_3',
     'hopper_4',
     'hopper_5'
+]
+
+# The held-out morphologies used to test the zero shot performances of our model :
+
+test_morphologies = [
+    'cheetah_3_balanced', 
+    'cheetah_5_back',
+    'cheetah_6_front',
+    'walker_3_main', 
+    'walker_6_main',
+    'humanoid_2d_7_left_leg', 
+    'humanoid_2d_8_right_knee',
 ]

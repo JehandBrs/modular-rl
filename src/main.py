@@ -241,7 +241,6 @@ def train():
 
             # reset training variables
             obs_list = envs_train.reset()
-            # obs_list = [env_train.reset() for env_train in envs_train]
             done_list = [False for i in range(num_envs_train)]
             episode_reward_list = [0 for i in range(num_envs_train)]
             episode_timesteps_list = [0 for i in range(num_envs_train)]
